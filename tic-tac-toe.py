@@ -7,7 +7,7 @@ class Board:
 
     def display(self):
         print("-------")
-        for row in board:
+        for row in self.board:
             print("|" + "|".join(row) + "|")
             print("-------")
 
@@ -17,7 +17,13 @@ class ComputerOlayer:
         self.symbol = symbol
 
     def choose_move(self, board):
-        pass
+        self.board = board
+        self.move_complete = False
+        while not self.move_complete:
+            slot = self.board[random.randint(0, 2)][random.randint(0, 2)]
+            if slot == " ":
+                slot = self.symbol
+                self.move_complete = True
 
 
 class HumanPlayer:
@@ -48,5 +54,4 @@ def print_board(board):
 # Створення пустого поля
 board = [[" " for _ in range(3)] for _ in range(3)]
 
-# Виведення пустого поля
-print_board(board)
+# Виведення пустого
