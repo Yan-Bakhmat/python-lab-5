@@ -3,13 +3,16 @@ import random
 
 class Board:
     def __init__(self):
-        self.field = [[" " for _ in range(3)] for _ in range(3)]
+        self.field = [[" " for _ in range(4)] for _ in range(4)]
+        self.field[0] = [' ', 'a', 'b', 'c']
+        for line in range(1, 4):
+            self.field[line][0] = str(line)
 
     def display(self):
-        print("-------")
+        print("---------")
         for row in self.field:
             print("|" + "|".join(row) + "|")
-            print("-------")
+            print("---------")
 
 
 class ComputerPlayer:
@@ -20,8 +23,8 @@ class ComputerPlayer:
         self.board = board
         move_complete = False
         while not move_complete:
-            column = random.randint(0, 2)
-            line = random.randint(0, 2)
+            column = random.randint(1, 3)
+            line = random.randint(1, 3)
             if self.board.field[line][column] == " ":
                 self.board.field[line][column] = self.symbol
                 move_complete = True
