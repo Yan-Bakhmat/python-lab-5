@@ -55,3 +55,14 @@ def print_board(board):
 board = [[" " for _ in range(3)] for _ in range(3)]
 
 # Виведення пустого
+print_board(board)
+
+symbol = 'X'
+move_complete = False
+while not move_complete:
+    column = random.randint(0, 2)
+    line = random.randint(0, 2)
+    if board[line][column] == " ":
+        board[line][column] = symbol
+        move_complete = True
+    print_board(board)
