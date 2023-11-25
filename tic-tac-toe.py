@@ -64,6 +64,9 @@ class EndGame:
 board = Board()
 board.display()
 
+game_go_on = True
+
+
 computer = ComputerPlayer('O')
 for _ in range(3):
     computer.choose_move(board).display()
