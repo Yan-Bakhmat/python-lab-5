@@ -66,13 +66,14 @@ class EndGame:
             return True
         elif self.board.field[1][1] == self.board.field[2][2] == self.board.field[3][3] == "X" or self.board.field[1][3] == self.board.field[2][2] == self.board.field[1][1] == "X":
             return True
-        for i in range(1, 4):
-            if self.board.field[i][1] == self.board.field[i][2] == self.board.field[i][3] == "O" or self.board.field[1][i] == self.board.field[2][i] == self.board.field[3][i] == "O":
-                return True
-            elif self.board.field[i][1] == self.board.field[i][2] == self.board.field[i][3] == "X" or self.board.field[1][i] == self.board.field[2][i] == self.board.field[3][i] == "X":
-                return True
-            else:
-                return False
+        else:
+            for i in range(1, 4):
+                if self.board.field[i][1] == self.board.field[i][2] == self.board.field[i][3] == "O" or self.board.field[1][i] == self.board.field[2][i] == self.board.field[3][i] == "O":
+                    return True
+                elif self.board.field[i][1] == self.board.field[i][2] == self.board.field[i][3] == "X" or self.board.field[1][i] == self.board.field[2][i] == self.board.field[3][i] == "X":
+                    return True
+                else:
+                    return False
 
 
 if __name__ == '__main__':
@@ -84,6 +85,18 @@ if __name__ == '__main__':
     game_on = True
 
     while game_on:
-        computer.choose_move(board).display()
-        game_on = not the_end.three_in_line():
-        human.make_move(board)
+        computer.choose_move(board)
+        board.display()
+        print(board.field)
+        print(the_end.three_in_line(board))
+        if game_on != the_end.three_in_line(board):
+            human.make_move(board)
+            board.display()
+            print(board.field)
+            print(the_end.three_in_line(board))
+            if game_on == the_end.three_in_line(board):
+                game_on == False
+        else:
+            game_on == False
+
+    print('Game Over')
