@@ -87,16 +87,16 @@ if __name__ == '__main__':
     while game_on:
         computer.choose_move(board)
         board.display()
-        print(board.field)
         print(the_end.three_in_line(board))
         if game_on != the_end.three_in_line(board):
             human.make_move(board)
             board.display()
-            print(board.field)
             print(the_end.three_in_line(board))
             if game_on == the_end.three_in_line(board):
-                game_on == False
+                game_on = False
+                print('You Win!')
         else:
-            game_on == False
+            game_on = False
+            print('You Lost')
 
     print('Game Over')
