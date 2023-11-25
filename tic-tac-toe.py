@@ -72,8 +72,7 @@ class EndGame:
                     return True
                 elif self.board.field[i][1] == self.board.field[i][2] == self.board.field[i][3] == "X" or self.board.field[1][i] == self.board.field[2][i] == self.board.field[3][i] == "X":
                     return True
-                else:
-                    return False
+            return False
 
 
 if __name__ == '__main__':
