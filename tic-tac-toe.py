@@ -9,6 +9,11 @@ class Board:
             self.field[line][0] = str(line)
 
     def display(self):
+        """
+        Метод для виведення ігрового поля.
+        Матриця 4x4, де перші лінія та стовпчик - це розмітка поля, а всі інші елементи - строки, що представляють клітинки ігрового поля:
+        " " - пуста клітинка, "X" - хрестик, "O" - нулик.
+        """
         print("---------")
         for row in self.field:
             print("|" + "|".join(row) + "|")
@@ -20,6 +25,10 @@ class ComputerPlayer:
         self.symbol = symbol
 
     def choose_move(self, board):
+        """
+        Метод, що генерує випадковий хід комп'ютера.
+        Для покращення логіки вибору клітинк для наступних ходів ком'ютера, в подальшому можна додати алгоритм аналізу ігрового поля, або спрбувати залучити штучний інтилект.
+        """
         self.board = board
         move_complete = False
         while not move_complete:
@@ -36,6 +45,11 @@ class HumanPlayer:
         self.symbol = symbol
 
     def make_move(self, board):
+        """
+        Метод зворотнього зв'язку з гравцем.
+        Гравцю пропонується ввести координати поля, куди він хотів би походити, у форматі [літера][цифра].
+        Введені дані перевіряються на коректність, у випадку неправильності вводу гравцю надається можливість змінити звій вибір.
+        """
         self.board = board
         decoder = {
             'a': 1,
@@ -58,9 +72,16 @@ class HumanPlayer:
 
 class EndGame:
     def __init__(self):
+        """
+        Створюється класс, що містить в собі методи для перевірки передумов для завершення гри.
+        В подальшому класс можна вдосконалити, щоб він не тільки зберігав їх, а й проводив саму перевірку.
+        """
         pass
 
     def free_slots_exist(self, board):
+        """
+        Метод перевіряє, чи залишились вільні клітинки на ігровому полі.
+        """
         self.board = board
         for n in range(1, 4):
             for k in range(1, 4):
@@ -69,6 +90,9 @@ class EndGame:
         return False
 
     def three_in_line(self, board):
+        """
+        Метод перевіряє ігрове поле на наявність трьох однакових елементів ("X" або "O") по вертикалі, горизонталі чи-то діагоналі.
+        """
         self.board = board
         if self.board.field[1][1] == self.board.field[2][2] == self.board.field[3][3] == "O" or self.board.field[1][3] == self.board.field[2][2] == self.board.field[3][1] == "O":
             return True
