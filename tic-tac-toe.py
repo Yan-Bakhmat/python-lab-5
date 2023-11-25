@@ -57,23 +57,33 @@ class HumanPlayer:
 
 
 class EndGame:
-    def __init__(self):
+    def __init__(self, board):
         pass
 
-    def the_end(self, board):
+    def three_in_line(self, board):
         self.board = board
+        if self.board.field[1][1] == self.board.field[2][2] == self.board.field[3][3] == "O" or self.board.field[1][3] == self.board.field[2][2] == self.board.field[1][1] == "O":
+            return True
+        elif self.board.field[1][1] == self.board.field[2][2] == self.board.field[3][3] == "X" or self.board.field[1][3] == self.board.field[2][2] == self.board.field[1][1] == "X":
+            return True
         for i in range(1, 4):
-            if self.board.field[i][1] == self.board.field[i][2] == self.board.field[i][3] or self.board.field[1][i] == self.board.field[2][i] == self.board.field[3][i]:
-                pass
-
+            if self.board.field[i][1] == self.board.field[i][2] == self.board.field[i][3] == "O" or self.board.field[1][i] == self.board.field[2][i] == self.board.field[3][i] == "O":
+                return True
+            elif self.board.field[i][1] == self.board.field[i][2] == self.board.field[i][3] == "X" or self.board.field[1][i] == self.board.field[2][i] == self.board.field[3][i] == "X":
+                return True
+            else:
+                return False
+        
 
 if __name__ == '__main__':
     board = Board()
     computer = ComputerPlayer('O')
     human = HumanPlayer('X')
+    the_end = EndGame()
 
     game_on = True
 
     while game_on:
         computer.choose_move(board).display()
+        game_on = not the_end.three_in_line():
         human.make_move(board)
