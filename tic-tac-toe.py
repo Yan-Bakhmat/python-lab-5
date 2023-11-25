@@ -61,15 +61,13 @@ class EndGame:
         pass
 
 
-board = Board()
-board.display()
+if __name__ == '__main__':
+    board = Board()
+    computer = ComputerPlayer('O')
+    human = HumanPlayer('X')
 
-game_go_on = True
+    game_on = True
 
-
-computer = ComputerPlayer('O')
-for _ in range(3):
-    computer.choose_move(board).display()
-
-human = HumanPlayer('X')
-human.make_move(board).display()
+    while game_on:
+        computer.choose_move(board).display()
+        human.make_move(board)
