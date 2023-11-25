@@ -1,5 +1,3 @@
 # python-lab-5
 
-Лабораторна робота №5
-
-Програма являє собою гру в хрестики-нолики.
+This program is an implementation of the Tic Tac Toe game.
