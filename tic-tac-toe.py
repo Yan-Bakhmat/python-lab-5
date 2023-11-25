@@ -60,6 +60,14 @@ class EndGame:
     def __init__(self):
         pass
 
+    def free_slots_exist(self, board):
+        self.board = board
+        for n in range(1, 4):
+            for k in range(1, 4):
+                if board.field[n][k] == ' ':
+                    return True
+        return False
+
     def three_in_line(self, board):
         self.board = board
         if self.board.field[1][1] == self.board.field[2][2] == self.board.field[3][3] == "O" or self.board.field[1][3] == self.board.field[2][2] == self.board.field[3][1] == "O":
