@@ -57,7 +57,7 @@ class HumanPlayer:
 
 
 class EndGame:
-    def __init__(self, board):
+    def __init__(self):
         pass
 
     def three_in_line(self, board):
@@ -73,7 +73,7 @@ class EndGame:
                 return True
             else:
                 return False
-        
+
 
 if __name__ == '__main__':
     board = Board()
