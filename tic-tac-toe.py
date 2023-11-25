@@ -62,9 +62,9 @@ class EndGame:
 
     def three_in_line(self, board):
         self.board = board
-        if self.board.field[1][1] == self.board.field[2][2] == self.board.field[3][3] == "O" or self.board.field[1][3] == self.board.field[2][2] == self.board.field[1][1] == "O":
+        if self.board.field[1][1] == self.board.field[2][2] == self.board.field[3][3] == "O" or self.board.field[1][3] == self.board.field[2][2] == self.board.field[3][1] == "O":
             return True
-        elif self.board.field[1][1] == self.board.field[2][2] == self.board.field[3][3] == "X" or self.board.field[1][3] == self.board.field[2][2] == self.board.field[1][1] == "X":
+        elif self.board.field[1][1] == self.board.field[2][2] == self.board.field[3][3] == "X" or self.board.field[1][3] == self.board.field[2][2] == self.board.field[3][1] == "X":
             return True
         else:
             for i in range(1, 4):
@@ -87,11 +87,9 @@ if __name__ == '__main__':
     while game_on:
         computer.choose_move(board)
         board.display()
-        print(the_end.three_in_line(board))
         if game_on != the_end.three_in_line(board):
             human.make_move(board)
             board.display()
-            print(the_end.three_in_line(board))
             if game_on == the_end.three_in_line(board):
                 game_on = False
                 print('You Win!')
