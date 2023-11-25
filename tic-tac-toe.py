@@ -95,6 +95,6 @@ if __name__ == '__main__':
                 print('You Win!')
         else:
             game_on = False
-            print('You Lost')
+            print('You Lose')
 
     print('Game Over')
