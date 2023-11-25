@@ -62,9 +62,9 @@ class EndGame:
 
     def the_end(self, board):
         self.board = board
-        for i in range(1,4):
+        for i in range(1, 4):
             if self.board.field[i][1] == self.board.field[i][2] == self.board.field[i][3] or self.board.field[1][i] == self.board.field[2][i] == self.board.field[3][i]:
-
+                pass
 
 
 if __name__ == '__main__':
