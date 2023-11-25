@@ -92,16 +92,19 @@ if __name__ == '__main__':
     game_on = True
 
     while game_on:
-        computer.choose_move(board)
-        board.display()
-        if game_on != the_end.three_in_line(board):
-            human.make_move(board)
+        if the_end.free_slots_exist(board) == True:
+            computer.choose_move(board)
             board.display()
-            if game_on == the_end.three_in_line(board):
+            if the_end.three_in_line(board) == False:
+                if the_end.free_slots_exist(board) == True:
+                    human.make_move(board)
+                    board.display()
+                    if the_end.three_in_line(board) == True:
+                        game_on = False
+                        print('You Win!')
+            else:
                 game_on = False
-                print('You Win!')
+                print('You Lose')
         else:
             game_on = False
-            print('You Lose')
-
-    print('Game Over')
+            print('Game Over')
