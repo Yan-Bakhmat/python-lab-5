@@ -46,13 +46,13 @@ class HumanPlayer:
         tester_lines = ['1', '2', '3']
         move_complate = False
         while not move_complate:
-            choose = input("Choose a slot: ")
+            choose = input("Choose a free slot: ")
             if len(choose) == 2 and choose[0] in tester_column and choose[1] in tester_lines and self.board.field[int(choose[1])][decoder[choose[0]]] == ' ':
                 self.board.field[int(choose[1])
                                  ][decoder[choose[0]]] = self.symbol
                 move_complate = True
             else:
-                print('Please select an existing slot')
+                print('Please select a correct slot')
         return self.board
 
 
